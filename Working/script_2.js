@@ -91,6 +91,8 @@ var upperCasedCharacters = [
 // Prompt user to choose a number of characters between 10 and 63
 // If number greater than 63 or less than 10, prompt again
 // Else store value as number of characters
+function generatePassword() {
+
 var quantChar = 0;
 
 while (quantChar < 10 || quantChar > 63) {
@@ -149,7 +151,10 @@ for (var i = 0; i < quantChar; i++) {
 
 // Select n random characters to make the password and store in an array/variable
 console.log(characters);
-var password = characters.join();
+var password = characters.join('');
 
 // Print password in box
 console.log(password);
+}
+
+document.getElementById("password").innerHTML = password
