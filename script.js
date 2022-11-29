@@ -88,34 +88,75 @@ var upperCasedCharacters = [
   'Z'
 ];
 
-
-
-
-// Function to prompt user for password options
-function getPasswordOptions() {
-
-}
-
-// Function for getting a random element from an array
-function getRandom(arr) {
-
-}
-
-// Function to generate password with user input
+// Prompt user to choose a number of characters between 10 and 63
+// If number greater than 63 or less than 10, prompt again
+// Else store value as number of characters
 function generatePassword() {
 
+var quantChar = 0;
+
+while (quantChar < 10 || quantChar > 63) {
+  var quantChar = prompt("How many characters would you like in your password? (Enter a value between 10 and 63 inclusive.)");
 }
 
-// Get references to the #generate element
-var generateBtn = document.querySelector('#generate');
+console.log(quantChar);
 
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector('#password');
+var uppercase = false;
+var lowercase = false;
+var numerical = false;
+var special = false;
 
-  passwordText.value = password;
+// Confirm if the user wants Lowercase, Uppercase, Numeric and Special Characters
+// If yes, concatenate into array
+
+while (uppercase === false && lowercase === false && numerical === false && special === false) {
+  var uppercase = confirm("Would you like your password to contain uppercase characters?");
+  var lowercase = confirm("Would you like your password to contain lowercase characters?");
+  var numerical = confirm("Would you like you password to contain numerical characters?");
+  var special = confirm("Would you like your password to contain special characters ($@%&*, etc)");
 }
 
-// Add event listener to generate button
-generateBtn.addEventListener('click', writePassword);
+var passwordSpec = [];
+
+passwordSpec.push(uppercase, lowercase, numerical, special);
+
+console.log(passwordSpec);
+
+var usedChar = [];
+
+if (passwordSpec[0] === true) {
+  usedChar = usedChar.concat(upperCasedCharacters);
+}
+
+if (passwordSpec[1] === true) {
+  usedChar = usedChar.concat(lowerCasedCharacters);
+}
+
+if (passwordSpec[2] === true) {
+  usedChar = usedChar.concat(numericCharacters);
+}
+
+if (passwordSpec[3] === true) {
+  usedChar = usedChar.concat(specialCharacters);
+}
+
+console.log(usedChar);
+
+var characters = [];
+
+for (var i = 0; i < quantChar; i++) {
+  var random = Math.floor(Math.random() * usedChar.length);
+  characters.push(usedChar[random]);
+}
+
+// Select n random characters to make the password and store in an array/variable
+console.log(characters);
+var password = characters.join('');
+
+// Print password in box
+console.log(password);
+
+
+document.getElementById("password").innerHTML = password
+
+}
