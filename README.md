@@ -11,3 +11,4 @@ The user must select at least one character type - if they do not, they will be 
 
 The password is then displayed in the text area on the screen
 
+![](Result_Image.png)
